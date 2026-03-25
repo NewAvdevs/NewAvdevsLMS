@@ -16,6 +16,12 @@ class CreateQuizzesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('lesson_id');
             $table->unsignedInteger('passing_percentage');
+            $table->string('title');
+            $table->float('passing_percentage')->default(70.0);
+            $table->integer('max_attempts')->default(3);
+            $table->boolean('is_required')->default(true);
+            $table->timestamps();
+            $table->softDeletes();
             $table->timestamps();
 
             // Foreign key constraint
