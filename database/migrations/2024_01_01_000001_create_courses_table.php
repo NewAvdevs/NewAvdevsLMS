@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateCoursesTable extends Migration
 {
@@ -15,10 +16,14 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
+            $table->longText('description')->nullable();
             $table->string('thumbnail_url')->nullable();
             $table->boolean('is_published')->default(false);
+            $table->unsignedBigInteger('created_by')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+            
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('set null');
         });
     }
 
