@@ -1,0 +1,17 @@
+# Laravel Specific Exclusions
+/vendor/
+/node_modules/
+/public/storage
+/.env
+/.env.*.php
+Homestead.yaml
+Homestead.json
+/npm-debug.log
+/yarn-error.log
+
+# NativePHP Specific Exclusions
+/compiled/
+/cache/
+/logs/
+/.idea/
+/.vscode/
