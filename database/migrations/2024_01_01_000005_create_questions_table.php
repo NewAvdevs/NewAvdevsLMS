@@ -8,11 +8,14 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('quiz_id')->constrained();
+            $table->foreignId('quiz_id')->constrained()->onDelete('cascade');
             $table->text('question_text');
             $table->json('options');
             $table->unsignedInteger('correct_option_index');
+            $table->string('question_type')->default('multiple_choice');
+            $table->integer('order')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
